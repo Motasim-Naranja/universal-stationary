@@ -32,7 +32,7 @@ const Products = () => {
   return (
     <div className='bg-gray-400'>
       {/* search section */}
-      {/* <div className='bg-white py-4 flex justify-between'>
+      <div className='bg-white py-4 flex justify-between'>
         <h4 className='font-bold text-xl mx-5'>Products</h4>
         <div className='flex gap-4 mx-5'>
           <input 
@@ -46,7 +46,7 @@ const Products = () => {
             Search
           </div>
         </div>
-      </div> */}
+      </div>
 
       <div className='w-[80%] mx-auto py-6'>
         {/* Grid container for responsive layout */}
