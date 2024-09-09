@@ -8,8 +8,8 @@ import AboutUs from './components/AboutUs'
 import ContactUS from './components/ContactUS'
 import Footer from './components/Footer'
 import Links from './components/Links'
-import CamparisonTable from './components/CamparisionTable'
-import PageError from './components/pageError'
+// import CamparisonTable from './components/CamparisionTable'
+// import PageError from './components/pageError'
 
 
 
@@ -20,7 +20,7 @@ const App = () => {
       <Navbar/>
       
       <Routes>
-          <Route path='*' element={<PageError/>}/>
+          {/* <Route path='*' element={<PageError/>}/> */}
           <Route path='/' element={ <Home/> }/>
           <Route path='/products' element={ <Products/> }/>
           <Route path='/brands' element={ <Brands/> }/>
