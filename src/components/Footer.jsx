@@ -1,11 +1,26 @@
-import React from 'react'
+// import React from 'react'
+
+// const Footer = () => {
+//   return (
+//     <div className="py-4 text-center bg-blue-900 text-white">
+//       <p className="text-sm">&copy; {new Date().getFullYear()} UNIVERSAL STATIONARY. All rights reserved.</p>
+//     </div>
+//   )
+// }
+
+// export default Footer
+
+
+// responsive
+
+import React from 'react';
 
 const Footer = () => {
   return (
-    <div class="py-4 text-center bg-blue-900 text-white">
-      <p class="text-sm">&copy; {new Date().getFullYear()} UNIVERSAL STATIONARY. All rights reserved.</p>
-    </div>
-  )
-}
+    <footer className="py-4 text-center bg-blue-900 text-white">
+      <p className="text-sm">&copy; {new Date().getFullYear()} UNIVERSAL STATIONARY. All rights reserved.</p>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

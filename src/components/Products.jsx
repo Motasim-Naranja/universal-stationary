@@ -19,10 +19,6 @@ const Products = () => {
     }
   };
 
-
-  
-
-  // Handle remove product from comparison
   const removeProduct = (productNumber) => {
     setSelectedProducts((prevProducts) =>
       productNumber === 1 ? [prevProducts[1]] : [prevProducts[0]]
@@ -30,40 +26,40 @@ const Products = () => {
   };
 
   return (
-    <div className='bg-gray-400'>
-      {/* search section */}
-      <div className='bg-white py-4 flex justify-between'>
-        <h4 className='font-bold text-xl mx-5'>Products</h4>
-        <div className='flex gap-4 mx-5'>
+    <div className='bg-gray-200 min-h-screen'>
+      {/* Search section */}
+      <div className='bg-white py-4 flex flex-col sm:flex-row justify-between items-center px-4'>
+        <h4 className='font-bold text-xl mb-4 sm:mb-0'>Products</h4>
+        <div className='flex items-center gap-2 w-full sm:w-auto'>
           <input 
             type="text"
             name="search" 
             id="searchField" 
             placeholder='Search Item' 
-            className='text-center border border-black' 
+            className='w-full sm:w-auto text-center border border-black px-4 py-2 rounded-lg focus:outline-none'
           />
-          <div className="px-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
             Search
-          </div>
+          </button>
         </div>
       </div>
 
-      <div className='w-[80%] mx-auto py-6'>
+      <div className='w-[90%] mx-auto py-6'>
         {/* Grid container for responsive layout */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {productsData.map((product) => (
-            // card container
-            <div key={product.id} className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-              {/* image */}
+            // Card container
+            <div key={product.id} className="max-w-sm rounded overflow-hidden shadow-lg bg-white flex flex-col justify-between">
+              {/* Image */}
               <img className="w-full h-48 object-cover" src={product.image} alt={product.name} />
 
-              {/* name and summary */}
+              {/* Name and summary */}
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{product.name}</div>
                 <p className="text-gray-700 text-base">{product.summary}</p>
               </div>
 
-              {/* price , color , size , brand */}
+              {/* Price, color, size, brand */}
               <div className="px-6 pt-4 pb-2">
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                   Price: {product.price}
@@ -82,13 +78,16 @@ const Products = () => {
               {/* Row for buttons */}
               <div className="px-6 pt-4 pb-4 flex justify-between items-center">
                 <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300"
                   onClick={() => handleCompare(product)}
                 >
                   Compare
                 </button>
 
-                <a href= {`/${product.id}.docx`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                <a 
+                  href={`/${product.id}.docx`} 
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300"
+                >
                   Download Detail
                 </a>
               </div>
@@ -96,16 +95,6 @@ const Products = () => {
           ))}
         </div>
       </div>
-
-      {/* All products in one table */}
-      {/* <div className="pt-4 pb-4 flex justify-center">
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      <Link to="/productsTable">
-        All products in one table
-      </Link>
-    </button>
-  </div> */}
-
 
       {/* Comparison section: Show when at least 1 product is selected */}
       {selectedProducts.length > 0 && (
@@ -115,9 +104,6 @@ const Products = () => {
           removeProduct={removeProduct}
         />
       )}
-
-      {/* Additional comparison section (if needed) */}
-      {/* <CamparisionTable products={productsData} /> */}
     </div>
   );
 };

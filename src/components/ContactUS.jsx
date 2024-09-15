@@ -1,13 +1,21 @@
 import React from 'react';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { useForm } from 'react-hook-form';
 
 const ContactUs = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = data => {
+    // Handle form submission
+    console.log(data);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Contact Us</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Address */}
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
             <FaMapMarkerAlt className="text-blue-600 text-4xl mb-4 mx-auto" />
@@ -33,17 +41,19 @@ const ContactUs = () => {
         </div>
 
         {/* Contact Form */}
-        <div className="mt-12">
+        <div>
           <h3 className="text-2xl font-bold mb-6 text-center">Send Us a Message / Feedback</h3>
-          <form className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+          <form className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-semibold mb-2">Name</label>
               <input
                 type="text"
                 id="name"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                {...register('name', { required: 'Name is required' })}
+                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 ${errors.name ? 'border-red-500' : ''}`}
                 placeholder="Your Name"
               />
+              {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
             </div>
 
             <div className="mb-4">
@@ -51,19 +61,29 @@ const ContactUs = () => {
               <input
                 type="email"
                 id="email"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                {...register('email', { 
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: 'Invalid email address'
+                  }
+                })}
+                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 ${errors.email ? 'border-red-500' : ''}`}
                 placeholder="Your Email"
               />
+              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
             </div>
 
             <div className="mb-4">
               <label htmlFor="message" className="block text-sm font-semibold mb-2">Message / Feedback</label>
               <textarea
                 id="message"
+                {...register('message', { required: 'Message is required' })}
                 rows="4"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 ${errors.message ? 'border-red-500' : ''}`}
                 placeholder="Your Message"
               ></textarea>
+              {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
             </div>
 
             <button

@@ -11,16 +11,16 @@ const AboutUs = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Section - Description */}
           <div className="text-lg leading-relaxed text-gray-700 space-y-6">
-            <p>
-              <FaCheckCircle className="inline-block text-green-500 mr-2" />
+            <p className="flex items-center">
+              <FaCheckCircle className="text-green-500 mr-3" />
               Universal Stationary is your one-stop shop for all your stationary needs. From high-quality office supplies to essential school items, we offer a diverse range of products from top brands like Dollar, Piano, Signature, Staples, and Fox.
             </p>
-            <p>
-              <FaCheckCircle className="inline-block text-green-500 mr-2" />
+            <p className="flex items-center">
+              <FaCheckCircle className="text-green-500 mr-3" />
               Established with a commitment to quality and customer satisfaction, we have grown to become a trusted name in the industry.
             </p>
-            <p>
-              <FaCheckCircle className="inline-block text-green-500 mr-2" />
+            <p className="flex items-center">
+              <FaCheckCircle className="text-green-500 mr-3" />
               Our mission is to provide reliable and affordable stationary products that meet the needs of both professionals and students alike.
             </p>
           </div>
@@ -38,12 +38,11 @@ const AboutUs = () => {
         {/* Bottom Section - Extra Info */}
         <div className="mt-12 text-center">
           <p className="text-xl text-gray-800 font-semibold">We look forward to serving you!</p>
-            <Link to='/products' >
-          <button className="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full transition duration-300">
+          <Link to="/products">
+            <button className="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full transition duration-300">
               Explore Our Products
-           
-          </button>
-            </Link>
+            </button>
+          </Link>
         </div>
       </div>
     </section>
@@ -51,8 +50,3 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
-
-
-
-
-
